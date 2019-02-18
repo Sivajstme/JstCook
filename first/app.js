@@ -4,6 +4,7 @@
 import Search from "./model/Search";
 import * as searchView from './views/searchView';
 import {elements} from "./views/base";
+
 /** Global State of the App
  * - Search Object
  * - Current Recipe Object
@@ -22,11 +23,15 @@ const controlSearch = async () => {
         state.search = new Search(query);
 
         //Prepare UI for result
-
+        searchView.clearInput();
+        searchView.clearResults();
 
         //Search for Recipes
         await state.search.getResults();
         console.log(state.search.data);
+        searchView.renderResults(state.search.data);
+        elements.show_results.style.display = 'block';
+
         //Render the results on UI
 
     }
@@ -38,6 +43,9 @@ const controlSearch = async () => {
 elements.searchForm.addEventListener('submit', e=>{
     e.preventDefault();
     controlSearch();
+    elements.headerTransform.classList.add('AfterSubmit');
+    elements.searchBar.classList.add('aftrSearch');
+    
 
 
 })
