@@ -1,5 +1,136 @@
 
-body {
-    background: url('assects/back.jpg') no-repeat center center fixed;
+*{
+    margin : 0;
+    padding: 0;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+.header{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.container {
+    height: 100vh;
+    background-image:url('../assects/back.jpg');
     background-size: cover;
+    opacity: 0.8;
+
+}
+.container__title{
+    font-size: 10em;
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+    display: block;
+    transform: translateY(5rem);
+    animation: headAnim 2s ease-in-out ;
+    font-weight: 500;
+    margin-left: 37%;
+
+}
+
+.AfterSubmit{
+    animation: submit 2s ease-in-out;
+
+}
+.search{
+    align-items: center;
+    display: block;
+}
+.search_field{
+    width : 40%;
+    margin-left: 29%;
+    margin-top: 4em;
+    border-radius: 10rem;
+    background: none;
+    border: none;
+    height: 2.7em;
+    opacity: 0.9;
+    background-color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.9em;
+    animation: SearchAni 3s;
+
+}
+.search__input input{
+    padding-left: 1.5em;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+outline: none;
+}
+.search_btn{
+    width: 10%;
+    font-weight: 500;
+    border-radius: 10rem;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-items: center;
+    height: 3em;
+    transform: translateX(-5em);
+    background-color: aqua;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7em;
+    position: relative;
+    top: -1px;
+    animation: btnAni 3s;
+}
+.search_btn:hover{
+    background-image: linear-gradient(to right bottom,transparent 0%, rgb(149, 222, 245) 40%, rgb(26, 212, 245) 100%)
+}
+.results{
+    width: 45%;
+    border: 2px solid black;
+
+}
+
+
+@keyframes headAnim {
+    0%{
+        transform: translate(0,0);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0,5rem);  
+    }
+
+}
+
+@keyframes SearchAni {
+    0%{
+        opacity: 0;
+        transform: translateX(-10em);
+    }
+    100%{
+        transform: translateX(0em)
+    }
+}
+@keyframes btnAni {
+    0%{
+        opacity: 0;
+        transform: translateX(10em);
+
+    }
+    
+    100%{
+        transform: translateX()
+    }
+}
+
+@keyframes submit {
+    0%{
+        transform: translate(0,5em);
+        font-size: 10em;
+
+    }
+    100%{
+        transform: translate(0,5rem);  
+        font-size: 7em;
+    }
+
 }

@@ -17,19 +17,34 @@ html{
     background-image:url('../assects/back.jpg');
     background-size: cover;
     opacity: 0.8;
+    overflow: hidden;
 
 }
+ul {
+list-style-position: inside;
+}
+
 .container__title{
-    font-size: 10em;
+    font-size: 13em;
     font-family: 'Dancing Script', cursive;
     font-style: italic;
     display: block;
     transform: translateY(5rem);
     animation: headAnim 2s ease-in-out ;
     font-weight: 500;
-    margin-left: 37%;
+    margin-left: 33%;
 
+}
 
+.AfterSubmit{
+    font-size: 7em;
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+    display: block;
+    transform: translateY(2rem);
+    font-weight: 500;
+    margin-left: 43%;
+    animation: submit 3s ;
 }
 .search{
     align-items: center;
@@ -37,8 +52,8 @@ html{
 }
 .search_field{
     width : 40%;
-    margin-left: 29%;
-    margin-top: 4em;
+    margin-left: 26%;
+    margin-top: 9em;
     border-radius: 10rem;
     background: none;
     border: none;
@@ -48,6 +63,22 @@ html{
     font-family: 'Dancing Script', cursive;
     font-size: 1.9em;
     animation: SearchAni 3s;
+
+}
+
+.aftrSearch{
+    width: 40%;
+    margin-left: 29%;
+    margin-top: 2em;
+    border-radius: 10rem;
+    background: none;
+    border: none;
+    height: 2.7em;
+    opacity: 0.9;
+    background-color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.9em;
+    animation: aftrSear 2s;
 
 }
 .search__input input{
@@ -79,6 +110,66 @@ outline: none;
 .search_btn:hover{
     background-image: linear-gradient(to right bottom,transparent 0%, rgb(149, 222, 245) 40%, rgb(26, 212, 245) 100%)
 }
+.results{
+    width: 30%;
+    margin-top: 2em;
+    margin-left: 4.5em;
+    height: 90vh;
+    overflow: scroll;
+    border-radius: 5%;
+    background-color: antiquewhite;
+    display: none;
+    
+}
+
+.results__data{
+    margin-left: 2em;
+    color: #F59A83;
+    text-transform: uppercase;
+    font-weight: 500;
+
+}
+.results__author{
+    color: #968B87;
+    text-transform: uppercase;
+}
+ul{
+    list-style: none;
+}
+
+.results__link:link, .results__link:visited,
+.likes__link:link,
+.likes__link:visited {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    transition: all .3s;
+    border-right: 1px solid #fff;
+    text-decoration: none; 
+    font-size: 1.5em;
+    background-color: rgb(255, 253, 253);
+}
+.results__link:hover{
+    background-color: antiquewhite;
+    font-weight: 1000;
+    transform: translateY(-2px);
+}
+
+.results__fig{
+    flex: 0 0 5.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 5.5rem;
+    margin-right: 2rem;
+    position: relative;
+    backface-visibility: hidden;
+
+}
+.results__fig img{
+    display: block;
+    width: 127%;
+    height: 100%;
+}
 
 @keyframes headAnim {
     0%{
@@ -100,6 +191,14 @@ outline: none;
         transform: translateX(0em)
     }
 }
+@keyframes aftrSear{
+    0%{
+        margin-top: 9em;
+    }
+    100%{
+        margin-top: 2em;
+    }
+}
 @keyframes btnAni {
     0%{
         opacity: 0;
@@ -110,4 +209,16 @@ outline: none;
     100%{
         transform: translateX()
     }
+}
+
+@keyframes submit {
+    0%{
+        transform: translate(0,2em);
+        font-size: 7em;
+    }
+    100%{
+        transform: translateY(2rem);  
+        font-size: 7em;
+    }
+
 }
