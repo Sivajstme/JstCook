@@ -6,6 +6,8 @@
 html{
     box-sizing: border-box;
     font-size: 62.5%;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 .header{
     display: flex;
@@ -108,13 +110,14 @@ outline: none;
     animation: btnAni 3s;
 }
 .search_btn:hover{
-    background-image: linear-gradient(to right bottom,transparent 0%, rgb(149, 222, 245) 40%, rgb(26, 212, 245) 100%)
+    background-image: linear-gradient(to right bottom,transparent 0%, rgb(149, 222, 245) 40%, rgb(26, 212, 245) 100%);
+    
 }
 .results{
     width: 30%;
     margin-top: 2em;
     margin-left: 4.5em;
-    height: 90vh;
+    height: 70vh;
     overflow: scroll;
     border-radius: 5%;
     background-color: antiquewhite;
@@ -152,9 +155,17 @@ ul{
 .results__link:hover{
     background-color: antiquewhite;
     font-weight: 1000;
+    border-radius: 10%;
     transform: translateY(-2px);
 }
-
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 .results__fig{
     flex: 0 0 5.5rem;
     border-radius: 50%;
@@ -170,7 +181,25 @@ ul{
     width: 127%;
     height: 100%;
 }
-
+.loader{
+    margin : 5rem auto;
+    text-align: center;
+}
+.loader svg{
+    height: 5.5rem;
+    width : 5.5rem;
+    fill:rgba(243, 66, 12, 0.979);
+    transform-origin: 44% 50%;
+    animation: rotate 1.5s infinite linear;
+}
+@keyframes rotate{
+    0%{
+        transform:rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
 @keyframes headAnim {
     0%{
         transform: translate(0,0);
