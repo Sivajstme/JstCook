@@ -17,8 +17,6 @@ export default class Recipe{
             this.ingredients = fullRes.data.recipe.ingredients;
         }catch(err){
             console.log(err);
-
-
         }
     }
 
@@ -32,7 +30,7 @@ export default class Recipe{
     calServing(){
         this.calServing = 4;
     }
-    /**
+    /** Sample Data
      * ingredients: [
     0: "4 Tablespoons Butter"
     1: "2 Tablespoons Olive Oil"
@@ -48,24 +46,70 @@ export default class Recipe{
     11: "Chopped Fresh Parsley, To Taste"
     12: "1/2 cup Grated Parmesan Cheese"
                         ]
-     */
+    Example take 46943
+                        */
 
     parseIngredients(){
         //Takeing Reference of all the units 
-        const longUnits = ['tablespoon', 'tablespoons','ounce','ounces','teaspoon','teaspoons','cups','pound'];
+        console.log('From ParseIngrediens')
+        const longUnits = ['tablespoons', 'tablespoon','ounces','ounce','teaspoons','teaspoon','cups','pound'];
         const shortUnits = ['tbsp','tbsp','oz','oz','tsp','tsp','cup','pound'];
         const newIngredents = this.ingredients.map(el=>{
-            // 1) Uniform Units                 //Pound
-            let ingredient = el.toLowerCase();  //pound index: 4
+            // 1) Uniform Units                 //4 Tablespoons Butter
+            let ingredient = el.toLowerCase().replace(',','');  //4 tablespoons butter
             longUnits.forEach((unit,i) =>{       
                 ingredient =  ingredient.replace(unit,shortUnits[i]);
-                
-            });
-
-            // 2) Remove Paranthesis
+                //4 tablespoons butter = 4 tbsp butter
+            }); 
+            //[pound]
+            // 2) Remove  Paranthesis with data bcoz no use
+            ingredient = ingredient.replace(/ *\[[^\]]*]/g, ' ');
 
 
             //3) Parse ingredients into Count, Unit and ingredients
+
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => shortUnits.includes(el2));
+
+            // [ "4" "Tablespoons" "Butter"]
+            let objIng;
+            if (unitIndex > -1) {
+                //We will assume what comes before the units is the number
+                //The element is Present
+                // 4 1/4 cups , numPlace is [4, 1/2]
+                // 4 cups, arrCount is [ 4 ]
+                const numPlace = arrIng.slice(0, unitIndex);
+                let totalCount;
+                    if (numPlace.length === 1) { //4 cups
+                        totalCount = eval(numPlace[0].replace('-','+')); 
+
+                    }else{ //4 1/4 cups
+                        totalCount = eval(numPlace.join('+'));
+                    }
+                    
+                    objIng = {
+                        count : totalCount,
+                        unit: arrIng[unitIndex],
+                        ingredient: arrIng.slice(unitIndex + 1).join(' ')
+                    };
+
+            }else if(parseInt(arrIng[0], 10)){
+                //There is no unit but had number
+                objIng = {
+                    count : parseInt(arrIng[0],10),
+                    unit : '',
+                    ingredient : arrIng.slice(1).join(' ')
+                }
+            }else if (unitIndex === -1){
+                //There is no unit and No number
+                objIng = {
+                    count : 1,
+                    unit : '',
+                    ingredient
+                }
+            }
+            console.log('##########')
+            return objIng;
         })
 
         this.ingredients = newIngredents;
