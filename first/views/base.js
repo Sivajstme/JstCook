@@ -4,7 +4,8 @@ export const elements = {
     headerTransform: document.getElementById('jstCook'),
     searchBar: document.getElementById('searchBar'),
     results_output: document.querySelector('.results__list'),
-    show_results: document.querySelector('.results')
+    show_results: document.querySelector('.results'),
+    recipe: document.querySelector('recipe')
 };
 export const elementStrings = {
     loader : 'loader'

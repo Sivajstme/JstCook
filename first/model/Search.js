@@ -9,6 +9,7 @@ export default class Search{
     async getResults() {
 
         try{
+
             const res = await axios(`${config.cros}https://www.food2fork.com/api/search?key=${config.myKey}&q=${this.query}`);
             //console.log(res);
             this.data = res.data.recipes;
