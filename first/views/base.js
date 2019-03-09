@@ -5,7 +5,7 @@ export const elements = {
     searchBar: document.getElementById('searchBar'),
     results_output: document.querySelector('.results__list'),
     show_results: document.querySelector('.results'),
-    recipe: document.querySelector('recipe')
+    recipe: document.querySelector('.recipe')
 };
 export const elementStrings = {
     loader : 'loader'

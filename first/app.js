@@ -45,7 +45,7 @@ const controlSearch = async () => {
         //Render the results on UI
         clearLoader();
     }catch(err){
-        alert('Error Processing the Recipe');
+        console.log(err);
         clearLoader();
     }
     }
