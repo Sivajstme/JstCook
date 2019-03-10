@@ -132,7 +132,7 @@ outline: none;
     height: 70vh;
     overflow: scroll;
     border-radius: 5%;
-    background-color: antiquewhite;
+    background-color:#F9F5F3;
     display: none;
     
 }
@@ -171,7 +171,7 @@ ul{
     transform: translateY(-2px);
 }
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
+    width: 2px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
 }
 /* optional: show position indicator in red
@@ -259,7 +259,7 @@ ul{
 .recipe__details {
     display: flex;
     align-items: center;
-    padding: 5rem 0rem 2rem 13rem; 
+    padding: 4rem 0rem 1rem 11rem; 
 }
 .recipe__info {
     font-size: 1.5rem;
