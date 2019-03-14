@@ -14,7 +14,6 @@ import  Recipe  from "./model/Recipe";
  * - Liked Recipes
  */
 
-
 const state = {};
 /**
  * Search Controller
@@ -88,9 +87,13 @@ const controlRecipe = async () =>{
     const id = window.location.hash.replace('#','');    
     if (id) {
         //prepare DOM for changes
-        //renderLoader(elements.recipe);
+        recipeView.clearIngredient()    
+        renderLoader(elements.recipe);
 
-        //create new Recipe Object
+        //Highlight the selected item
+        if(state.search) searchView.resultSelected(id);
+
+        //create new Recipe Object  
         state.recipe = new Recipe(id);
         console.log(id);
         //window.r = state.recipe;
@@ -107,7 +110,7 @@ const controlRecipe = async () =>{
         state.recipe.calcTime();
         state.recipe.calServing();
         //Render Recipes
-        //clearLoader();
+        clearLoader();
             recipeView.renderRecipe(state.recipe)
         
         }catch(err){
@@ -124,8 +127,23 @@ const controlRecipe = async () =>{
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event,controlRecipe));
 
+elements.recipe.addEventListener('click', e =>{
+    if (e.target.matches('.btn-decrease, .btn-decrease *')) {
+        //Decrease the  count
+        if (state.recipe.calServing > 1) {
+            state.recipe.updateServings('dec');
+            recipeView.updateUiServings(state.recipe);
+        }
 
+    } else if (e.target.matches('.btn-increase, .btn-increase *')) {
+        //Increase the count 
+        state.recipe.updateServings('inc');
+        recipeView.updateUiServings(state.recipe);
 
+    }
+
+    console.log(state.recipe);
+}); 
 
 
 
