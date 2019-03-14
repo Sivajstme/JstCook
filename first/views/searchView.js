@@ -29,7 +29,7 @@ const limitRecipeTitle = (title, limit = 17) =>{
 const renderRespie = recipe =>{
     const markUp = `
         <li >
-            <a class="results__link results__link--active" href="#${recipe.recipe_id}">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
                     <img src="${recipe.image_url}" alt="Test">
                         </figure>
@@ -41,6 +41,14 @@ const renderRespie = recipe =>{
         </li> `
 
         elements.results_output.insertAdjacentHTML('beforeend',markUp);
+};
+
+export const resultSelected = id => {
+    const arrRemove = Array.from(document.querySelectorAll('#results__link--active'));
+    arrRemove.forEach(el => {
+        el.removeAttribute('id', 'results__link--active');
+    });
+    document.querySelector(`a[href = "#${id}"]`).setAttribute('id','results__link--active');
 };
 //numResults = 30 ; resPerPage = 10;
 // 30/5

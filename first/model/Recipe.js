@@ -54,11 +54,13 @@ export default class Recipe{
         console.log('From ParseIngrediens')
         const longUnits = ['tablespoons', 'tablespoon','ounces','ounce','teaspoons','teaspoon','cups','pound'];
         const shortUnits = ['tbsp','tbsp','oz','oz','tsp','tsp','cup','pound'];
+        const units = [...shortUnits,'kg','g'];
+
         const newIngredents = this.ingredients.map(el=>{
             // 1) Uniform Units                 //4 Tablespoons Butter
             let ingredient = el.toLowerCase().replace(',','');  //4 tablespoons butter
             longUnits.forEach((unit,i) =>{       
-                ingredient =  ingredient.replace(unit,shortUnits[i]);
+                ingredient =  ingredient.replace(unit,units[i]);
                 //4 tablespoons butter = 4 tbsp butter
             }); 
             //[pound]
@@ -69,7 +71,7 @@ export default class Recipe{
             //3) Parse ingredients into Count, Unit and ingredients
 
             const arrIng = ingredient.split(' ');
-            const unitIndex = arrIng.findIndex(el2 => shortUnits.includes(el2));
+            const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
 
             // [ "4" "Tablespoons" "Butter"]
             let objIng;
@@ -108,12 +110,37 @@ export default class Recipe{
                     ingredient
                 }
             }
-            console.log('##########')
+            console.log('##########');
             return objIng;
         })
 
         this.ingredients = newIngredents;
     }
+
+    updateServings(type) {
+            // Type = dec || inc
+        //Updates the servings
+        
+        const newServings = type === 'dec' ? this.calServing - 1 : this.calServing + 1 ;
+
+        //Calculate the Ingredients
+        /**
+         *  For Calculating the Ingredients Required for no of people 
+         *  The default ingredients are required to serve for 4 people
+         *  So for 3 people (test Case)
+         *  count : 3 -- > 4 people
+         *  count : ? -- > 3 people
+         *  3 X 3 = 4 X y
+         *  y = 3 X 3 / 4 
+         *  
+         */
+        this.ingredients.forEach(el =>{
+            el.count *= (newServings / this.calServing)
+        });
+        this.calServing = newServings;
+    }
+
+
 
 }
 
