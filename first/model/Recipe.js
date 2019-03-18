@@ -51,7 +51,6 @@ export default class Recipe{
 
     parseIngredients(){
         //Takeing Reference of all the units 
-        console.log('From ParseIngrediens')
         const longUnits = ['tablespoons', 'tablespoon','ounces','ounce','teaspoons','teaspoon','cups','pound'];
         const shortUnits = ['tbsp','tbsp','oz','oz','tsp','tsp','cup','pound'];
         const units = [...shortUnits,'kg','g'];
@@ -110,7 +109,7 @@ export default class Recipe{
                     ingredient
                 }
             }
-            console.log('##########');
+
             return objIng;
         })
 

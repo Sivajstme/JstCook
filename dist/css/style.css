@@ -20,7 +20,11 @@ html{
     background-size: cover;
     opacity: 0.8;
     overflow: hidden;
+    display: grid;
 
+}
+.btn-small:hover{
+    transform: scale(1.05);
 }
 .btn-small, .btn-small:link, .btn-small:visited {
     font-size: 1.3rem;
@@ -133,7 +137,7 @@ outline: none;
     overflow: scroll;
     border-radius: 5%;
     background-color:#F9F5F3;
-    display: none;
+    display: block;
     
 }
 
@@ -445,6 +449,93 @@ transition: all .2s;
 .recipe__by {
     font-weight: 700;
 }
+.shopping {
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 102em;
+    width: 23%;
+    margin-top: -60em;
+    height: 65vh;
+    background-color: rgb(255, 255, 255);
+    overflow: scroll;
+    border-radius: 15px;
+
+}
+.heading-2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #F59A83;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    transform: skewY(-3deg);
+}
+.shopping__list {
+    list-style: none;
+    max-height: 77rem;
+    overflow: scroll;
+}
+.shopping__item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid #F2EFEE;
+    position: relative; 
+}
+.shopping__count {
+    flex: 0 0 7.5rem;
+    padding: .4rem .5rem;
+    border: 1px solid #F2EFEE;
+    border-radius: 3px;
+    margin-right: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; 
+}
+.shopping__count input {
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    width: 3.7rem;
+    border-radius: 3px; 
+}
+.shopping__count input:focus {
+        outline: none;
+        background-color: #F2EFEE; 
+
+}
+.shopping__count p {
+
+    font-size: 1.2rem; 
+}
+
+.shopping__description {
+    flex: 1;
+    font-size: 1.3rem;
+    margin-top: .4rem;
+    margin-right: 1.5rem; 
+}
+
+.shopping__delete {
+    margin-top: .5rem;
+    position: absolute;
+    right: 0;
+    background-image: linear-gradient(to right, transparent 0%, #fff 40%, #fff 100%);
+    width: 3.75rem;
+    padding-left: 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s; 
+}
+
+    .shopping__item:hover .shopping__delete {
+    opacity: 1;
+    visibility: visible; 
+}
+
 @keyframes rotate{
     0%{
         transform:rotate(0);
