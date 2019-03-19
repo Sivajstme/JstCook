@@ -4,6 +4,8 @@
 import Search from "./model/Search";
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView'
+import List from './model/List'
+import * as listView from './views/listView'
 import { elements, renderLoader , clearLoader} from "./views/base";
 import  Recipe  from "./model/Recipe";
 
@@ -15,6 +17,7 @@ import  Recipe  from "./model/Recipe";
  */
 
 const state = {};
+window.state = state;
 /**
  * Search Controller
  */
@@ -23,7 +26,7 @@ const controlSearch = async () => {
     //Take the Query form the View
     const query = searchView.getInput(); //From View
     //const query = 'pizza'
-    console.log(query)
+    console.log(query);
     //If Query
     if (query) {
         // Add new search to the State
@@ -86,6 +89,7 @@ const controlRecipe = async () =>{
     //Get ID from the url
     const id = window.location.hash.replace('#','');    
     if (id) {
+        elements.recipe.style.display = 'block';
         //prepare DOM for changes
         recipeView.clearIngredient()    
         renderLoader(elements.recipe);
@@ -101,7 +105,9 @@ const controlRecipe = async () =>{
         //Get recipe Data and parse Ingredients
         await state.recipe.getRecipe();
 
-        console.log(state.recipe.ingredients); //Displaying the Array before Parsing
+        //Displaying the Array before Parsing
+
+        //console.log(state.recipe.ingredients); 
 
         //Parsing the Ingredients before logging
         state.recipe.parseIngredients();
@@ -114,13 +120,49 @@ const controlRecipe = async () =>{
             recipeView.renderRecipe(state.recipe)
         
         }catch(err){
-
         console.log(err);
         }
 
     }
 
 }
+
+/**
+ *  List Controller
+ * 
+ */
+
+const controlList = () => {
+
+    // Create a new list If there is none Yet
+    if (!state.list) state.list = new List();
+
+    //Add Each Ingredient to the List 
+    state.recipe.ingredients.forEach(el => {
+        const items = state.list.addItem(el.count,el.unit,el.ingredient);
+        listView.renderItem(items);
+    });
+
+}
+//Delete and Update List Item Events
+elements.shoppingList.addEventListener('click',e =>{
+    console.log(e.target);
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+    
+    //Handling the Delete Item
+    if (e.target.matches('.shopping__delete ,.shopping__delete *')) {
+        
+        //Delete From the state
+        state.list.deleteItem(id);
+        
+        //Delete From UI
+        listView.deleteViewItem(id);
+    } else if (e.target.matches('.shopping__count--value')){
+        const val = parseFloat(e.target.value,10);
+        state.list.update(id,val);
+    }
+
+});
 
 // window.addEventListener('hashchange', controlRecipe);
 // window.addEventListener('load',controlRecipe);
@@ -140,12 +182,12 @@ elements.recipe.addEventListener('click', e =>{
         state.recipe.updateServings('inc');
         recipeView.updateUiServings(state.recipe);
 
+    } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
+        controlList();
     }
-
-    console.log(state.recipe);
 }); 
 
-
+window.list = new List();
 
 
 
