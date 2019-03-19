@@ -146,6 +146,7 @@ const controlList = () => {
 }
 //Delete and Update List Item Events
 elements.shoppingList.addEventListener('click',e =>{
+    console.log(e.target);
     const id = e.target.closest('.shopping__item').dataset.itemid;
     
     //Handling the Delete Item
@@ -156,6 +157,9 @@ elements.shoppingList.addEventListener('click',e =>{
         
         //Delete From UI
         listView.deleteViewItem(id);
+    } else if (e.target.matches('.shopping__count--value')){
+        const val = parseFloat(e.target.value,10);
+        state.list.update(id,val);
     }
 
 });

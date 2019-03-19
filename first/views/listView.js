@@ -29,13 +29,3 @@ export const deleteViewItem = id => {
 
 
 };
-
-
-/**
- * Had to work on deleting the items from the UI and State
- * 
- * Working woth no errors but 
- * task not achieved 
- * had to work on the login or an tipo error
- * 
- */
