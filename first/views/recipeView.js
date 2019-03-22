@@ -27,6 +27,7 @@ const formatCount = count => {
         //count = 2.5 => 2 1/2
         //count = 0.5 => 1/2
                             //  '2.5' = ['2','5'].map()
+       // const newCount = Math.round(count )
         const [int, dec] = count.toString().split('.').map(el=> parseInt(el,10));
                 //0  5
                 //2  5
@@ -44,7 +45,7 @@ const formatCount = count => {
     return `?`;
 }
 
-export const renderRecipe = recipe => {
+export const renderRecipe = (recipe, isLiked) => {
     const markUp = `
     <figure class="recipe__fig">
                 <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img">
@@ -83,7 +84,7 @@ export const renderRecipe = recipe => {
                 </div>
                 <button class="recipe__love">
                     <svg class="header__likes">
-                        <use href="assects/spin.svg#icon-heart-outlined"></use>
+                        <use href="assects/spin.svg#icon-heart${isLiked ? ' ' : '-outlined'}"></use>
                     </svg>
                 </button>
             </div>

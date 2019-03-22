@@ -6,7 +6,11 @@ export const elements = {
     results_output: document.querySelector('.results__list'),
     show_results: document.querySelector('.results'),
     recipe: document.querySelector('.recipe'),
-    shoppingList: document.querySelector('.shopping__list')
+    shoppingList: document.querySelector('.shopping__list'),
+    shopping: document.querySelector('.shopping'),
+    headLikeTag: document.querySelector('.likes'),
+    likesMenu: document.querySelector('.likes__field'),
+    likesList: document.querySelector('.likes__list')
 };
 export const elementStrings = {
     loader : 'loader'

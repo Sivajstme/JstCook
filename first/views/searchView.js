@@ -48,7 +48,7 @@ export const resultSelected = id => {
     arrRemove.forEach(el => {
         el.removeAttribute('id', 'results__link--active');
     });
-    document.querySelector(`a[href = "#${id}"]`).setAttribute('id','results__link--active');
+    document.querySelector(`.results__link[href *= "#${id}"]`).setAttribute('id','results__link--active');
 };
 //numResults = 30 ; resPerPage = 10;
 // 30/5
