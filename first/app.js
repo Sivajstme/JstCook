@@ -19,7 +19,6 @@ import * as likesView from "./views/likesView";
  */
 
 const state = {};
-window.state = state;
 /**
  * Search Controller
  */
@@ -28,12 +27,10 @@ const controlSearch = async () => {
     //Take the Query form the View
     const query = searchView.getInput(); //From View
     //const query = 'pizza'
-    console.log(query);
     //If Query
     if (query) {
         // Add new search to the State
         state.search = new Search(query);
-        console.log(state.search)
         //Prepare UI for result
         renderLoader(elements.show_results);
         searchView.clearInput();
