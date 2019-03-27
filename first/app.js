@@ -248,5 +248,3 @@ elements.recipe.addEventListener('click', e =>{
         controlLike();
     }
 }); 
-
-window.list = new List();

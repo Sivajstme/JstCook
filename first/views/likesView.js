@@ -28,6 +28,11 @@ export const renderLiked = like => {
                                 <h4 class="likes__name">${like.title }</h4>
                                 <p class="likes__author">${like.author}</p>
                             </div>
+                            <button class="likes__delete btn-tiny">
+                            <svg>
+                                <use href="../assects/spin.svg#icon-circle-with-cross"></use>
+                            </svg>
+                            </button>
                         </a>
                     </li>`;
     
@@ -36,6 +41,5 @@ export const renderLiked = like => {
 
 export const deleteLike = id => {
     const el = document.querySelector(`.likes__link[href*= "#${id}"]`).parentElement;
-    console.log(el);
     if (el) el.parentElement.removeChild(el);
 }

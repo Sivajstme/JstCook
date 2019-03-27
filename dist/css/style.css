@@ -181,6 +181,8 @@ outline: none;
     box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0.1);
     border-radius: 10px;
     opacity: 0;
+    height: 45vh;
+    overflow: scroll;
     visibility: hidden;
     transition: all .5s .2s; 
 
@@ -593,7 +595,17 @@ ul{
     margin-top: .4rem;
     margin-right: 1.5rem; 
 }
-
+.likes__delete{
+    position: absolute;
+    right: 9px;
+    height: 7.79em;
+    background-image: linear-gradient(to right, transparent 0%, #fff 40%, #fff 100%);
+    width: 3.75rem;
+    padding-left: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s; 
+}
 .shopping__delete {
     margin-top: .5rem;
     position: absolute;
@@ -607,6 +619,10 @@ ul{
 }
 
     .shopping__item:hover .shopping__delete {
+    opacity: 1;
+    visibility: visible; 
+}
+    .likes__link:hover .likes__delete {
     opacity: 1;
     visibility: visible; 
 }

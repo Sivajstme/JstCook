@@ -1,5 +1,5 @@
 export const config = {
-    myKey: 'a496e173690f867b5e83c93ac60dc3ec',
+    myKey: 'fa4317ffad37303bb3f9468d447cdfd7',
     cros :'https://cors-anywhere.herokuapp.com/'
 };
 
