@@ -15,6 +15,7 @@ export default class Recipe{
             this.publisher = fullRes.data.recipe.publisher;
             this.image = fullRes.data.recipe.image_url;
             this.ingredients = fullRes.data.recipe.ingredients;
+            this.url = fullRes.data.recipe.source_url;
         }catch(err){
             console.log(err);
         }
