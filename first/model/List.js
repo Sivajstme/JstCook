@@ -8,7 +8,6 @@ export default class List {
     constructor(){
         this.items = []; 
     }
-
     /**
      * For adding the elements to the List
      */
