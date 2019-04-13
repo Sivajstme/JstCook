@@ -3,7 +3,6 @@ import  { Fraction }  from 'fractional';
 
 export const clearIngredient = () =>{
     elements.recipe.innerHTML = '';
-
 }
 
 

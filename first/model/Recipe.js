@@ -31,6 +31,7 @@ export default class Recipe{
     calServing(){
         this.calServing = 4;
     }
+
     /** Sample Data
      * ingredients: [
     0: "4 Tablespoons Butter"

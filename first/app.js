@@ -152,7 +152,6 @@ elements.shoppingList.addEventListener('click',e =>{
     
     //Handling the Delete Item
     if (e.target.matches('.shopping__delete ,.shopping__delete *')) {
-        
         //Delete From the state
         state.list.deleteItem(id);
         

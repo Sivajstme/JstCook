@@ -6,7 +6,6 @@ export const toggleLikeBtn = isLiked =>{
     const iconString = isLiked ? 'icon-heart' : 'icon-heart-outlined';
     document.querySelector('.recipe__love use')
             .setAttribute('href',`assects/spin.svg#${iconString}`);
-
 }
 //  icon - heart - outlined
 
@@ -15,8 +14,6 @@ export const toggleLikeBtn = isLiked =>{
 export const toggleLikeMenu = numLikes => {
     elements.likesMenu.style.visibility = numLikes > 0 ? 'visible' : 'hidden';
 }
-
-
 
 export const renderLiked = like => {
     const markUp = `<li>
