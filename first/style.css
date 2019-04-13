@@ -103,7 +103,7 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-outline: none;
+    outline: none;
 }
 .search_btn{
     width: 10%;
@@ -134,7 +134,7 @@ outline: none;
     overflow: scroll;
     border-radius: 5%;
     background-color:#F9F5F3;
-    display: block;
+    display: none;
     
 }
 
@@ -152,7 +152,47 @@ outline: none;
 ul{
     list-style: none;
 }
+.likes {
+position: relative;
+align-self: stretch;
+padding: 0 !important; 
 
+}
+.likes__field {
+    cursor: pointer;
+    padding: 0 4rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: all .3s; 
+}
+.likes__field:hover {
+    background-color: #F2EFEE; 
+}
+.likes__panel:hover,
+.likes__field:hover + .likes__panel {
+    visibility: visible;
+    opacity: 1;
+}
+.likes__icon {
+    fill: #F59A83;
+    height: 3.75rem;
+    width: 3.75rem; 
+}
+.likes__panel {
+    position: absolute;
+    right: 0;
+    top: 10rem;
+    z-index: 10;
+    padding: 2rem 0;
+    width: 34rem;
+    background-color: #fff;
+    box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0.1);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s .2s; 
+
+}
 .results__link:link, .results__link:visited,
 .likes__link:link,
 .likes__link:visited {
@@ -208,7 +248,7 @@ ul{
     animation: rotate 1.5s infinite linear;
 }
 .recipe {
-    display: block;
+    display: none;
     margin-top: -54em;
     margin-left: 46em;
     width: 40%;
