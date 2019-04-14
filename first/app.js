@@ -10,7 +10,7 @@ import { elements, renderLoader , clearLoader} from "./views/base";
 import  Recipe  from "./model/Recipe";
 import Likes from "./model/Likes";
 import * as likesView from "./views/likesView";
-
+import * as message from "./model/Message"
 /** Global State of the App
  * - Search Object
  * - Current Recipe Object
