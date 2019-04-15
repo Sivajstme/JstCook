@@ -1,8 +1,4 @@
 import { elements } from "./base";
-/**
- * --> Render the Item 
- * --> Delete the Item
- */
 
 export const renderItem = item =>{
     const markUp = 

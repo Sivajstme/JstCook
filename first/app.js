@@ -11,6 +11,7 @@ import  Recipe  from "./model/Recipe";
 import Likes from "./model/Likes";
 import * as likesView from "./views/likesView";
 import * as message from "./model/Message"
+
 /** Global State of the App
  * - Search Object
  * - Current Recipe Object
@@ -62,20 +63,9 @@ elements.searchForm.addEventListener('submit', e=>{
     elements.searchBar.classList.add('aftrSearch');
 });
 
-/*Testing
-window.addEventListener('load', e=>{
-    e.preventDefault();
-    controlSearch();
-}) */
 /** 
  * Recipe Controller
  */
-
-    
-    // const searchRecipe = new Recipe('35382')
-
-    // searchRecipe.getRecipe();
-    // console.log(searchRecipe);
 
 const controlRecipe = async () =>{
 
@@ -105,8 +95,6 @@ const controlRecipe = async () =>{
         await state.recipe.getRecipe();
 
         //Displaying the Array before Parsing
-
-        //console.log(state.recipe.ingredients); 
 
         //Parsing the Ingredients before logging
         state.recipe.parseIngredients();
@@ -167,10 +155,6 @@ elements.shoppingList.addEventListener('click',e =>{
 /**
  * Likes Controller
  */ 
-
-//Must move likes into the controlLike Function 
-//After testing 
-
 const controlLike = () => {
     // if (!state.likes)
     const currentId = state.recipe.id;
@@ -213,8 +197,6 @@ const controlLike = () => {
         //reading the Likes from the local Storage
         //If there is one
         state.likes.readLikes();
-
-        //likesView.toggleLikeMenu(state.likes.getNumLiked());
         //Rendering the existing likes
         state.likes.likes.forEach(like => likesView.renderLiked(like))
 
