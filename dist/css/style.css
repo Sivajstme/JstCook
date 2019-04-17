@@ -626,7 +626,11 @@ ul{
     opacity: 1;
     visibility: visible; 
 }
-
+.message{
+    background-color:black;
+    margin-top: -20%;
+    
+}
 @keyframes rotate{
     0%{
         transform:rotate(0);
